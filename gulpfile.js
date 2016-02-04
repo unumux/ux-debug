@@ -2,7 +2,6 @@ require("babel-register");
 
 var gulp = require("gulp");
 var babel = require("gulp-babel");
-var sourcemaps = require("gulp-sourcemaps");
 
 var mocha = require("gulp-mocha");
 
