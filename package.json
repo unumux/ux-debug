@@ -8,7 +8,7 @@
     "doc": "jsdoc src/index.js",
     "test": "gulp test",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "semantic-release": "semantic-release pre && npm publish --access public && semantic-release post",
     "commit": "git-cz"
   },
   "author": "",
