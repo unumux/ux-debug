@@ -40,8 +40,8 @@
     "validate-commit-msg": "^1.1.1"
   },
   "dependencies": {
-    "colors": "^1.1.2",
-    "stack-trace": "0.0.9"
+    "stack-trace": "0.0.9",
+    "chalk": "^1.1.1"
   },
   "repository": {
     "type": "git",
