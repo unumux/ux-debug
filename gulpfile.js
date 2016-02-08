@@ -3,6 +3,8 @@ require("babel-register");
 var gulp = require("gulp");
 var babel = require("gulp-babel");
 
+var eslint = require("gulp-eslint");
+
 var mocha = require("gulp-mocha");
 
 var istanbul = require("gulp-istanbul");
@@ -42,7 +44,14 @@ gulp.task("mocha", function() {
         });
 });
 
-gulp.task("test", ["coverage", "mocha"]);
+gulp.task("eslint", function() {
+    return gulp.src(["src/**/*.js", "gulpfile.js"])
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
+});
+
+gulp.task("test", ["eslint", "coverage", "mocha"]);
 
 gulp.task("default", ["build"], function() {
     gulp.watch(src, ["test", "build"]);
