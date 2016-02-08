@@ -7,7 +7,7 @@ import sinonChai from "sinon-chai";
 const {expect} = chai.use(sinonChai);
 
 
-import chalk from "chalk"
+import chalk from "chalk";
 
 import * as debug from "./index";
 
