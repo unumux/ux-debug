@@ -23,6 +23,8 @@ describe("debug", function() {
 
         // spy on console.log calls
         this.spy = this.sandbox.spy(console, "log");
+        this.spyTime = this.sandbox.spy(console, "time");
+        this.spyTimeEnd = this.sandbox.spy(console, "timeEnd");
     });
 
     afterEach(function() {
@@ -67,6 +69,17 @@ describe("debug", function() {
             debug.json("Test4");
             expect(this.spy.called).to.be.false;
         });
+
+        it("should not print anything when `time/timeEnd` is called", function(done) {
+            debug.time("Test5");
+            expect(this.spyTime.called).to.be.false;
+
+            setTimeout(() => {
+                debug.timeEnd("Test5");
+                expect(this.spyTimeEnd.called).to.be.false;
+                done();
+            }, 50);
+        });
     });
 
     describe("enable({ printLine: false })", function() {
@@ -92,6 +105,17 @@ describe("debug", function() {
         it("should print when `json` is called", function() {
             debug.json({ "Test": "Test4" });
             expect(getConsoleLog()).to.eql({ "Test": "Test4" });
+        });
+
+        it("should print when `time/timeEnd` is called", function(done) {
+            debug.time("Test5");
+            expect(this.spyTime.called).to.be.true;
+
+            setTimeout(() => {
+                debug.timeEnd("Test5");
+                expect(this.spyTimeEnd.called).to.be.true;
+                done();
+            }, 50);
         });
     });
 });
