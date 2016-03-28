@@ -49,6 +49,18 @@ export function json(obj) {
     }
 }
 
+export function time() {
+    if(debugEnabled) {
+        console.time.apply(console, arguments);
+    }
+}
+
+export function timeEnd() {
+    if(debugEnabled) {
+        console.timeEnd.apply(console, arguments);
+    }
+}
+
 export function enabled() {
     return debugEnabled;
 }
